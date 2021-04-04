@@ -1,17 +1,19 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import fetchAll from "./store/actions/fetchAll";
 import "./App.css";
-import { useEffect, useState } from "react";
-import apiClient from "./api/client";
 
 function App() {
-  const [teams, setTeams] = useState([]);
+  const dispatch = useDispatch();
+  const teams = useSelector((state) => state.teams);
 
   useEffect(() => {
     async function fetchData() {
-      const res = await apiClient.get("/");
-      setTeams(res.data.teams);
+      dispatch(fetchAll());
     }
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
