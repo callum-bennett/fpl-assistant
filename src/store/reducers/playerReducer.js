@@ -6,14 +6,13 @@ const initialState = {
   allIds: [],
 };
 
-const teamReducer = (state = initialState, action) => {
+const playerReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ALL: {
-      const teamsById = arrayToObjectByKey(action.payload.teams);
-
+      const playersById = arrayToObjectByKey(action.payload.elements);
       return {
         ...state,
-        byId: teamsById,
+        byId: playersById,
       };
     }
 
@@ -22,4 +21,4 @@ const teamReducer = (state = initialState, action) => {
   }
 };
 
-export default teamReducer;
+export default playerReducer;

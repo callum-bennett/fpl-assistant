@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import fetchAll from "./store/actions/fetchAll";
 import "./App.css";
+import { getTeamsAsArray } from "./store/selectors/teams";
+import { getCurrentGameweek } from "./store/selectors/gameweeks";
 
 function App() {
   const dispatch = useDispatch();
-  const teams = useSelector((state) => state.teams);
+  const teams = useSelector(getTeamsAsArray);
+  const currentGameweek = useSelector(getCurrentGameweek);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <h2>{currentGameweek && `Current gameweek: ${currentGameweek.name}`}</h2>
       <ul>
         {teams.map((team) => (
           <li key={team.code}>{team.name}</li>
