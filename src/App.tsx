@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import fetchAll from "./store/actions/fetchAll";
 import { getTeamsAsArray } from "./store/selectors/teams";
 import { getCurrentGameweek } from "./store/selectors/gameweeks";
+import TeamList from "./components/Team/List";
 
-function App() {
+const App: React.FC = () => {
   const dispatch = useDispatch();
   const teams = useSelector(getTeamsAsArray);
   const currentGameweek = useSelector(getCurrentGameweek);
@@ -18,15 +19,12 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
+    <div>
       <h2>{currentGameweek && `Current gameweek: ${currentGameweek.name}`}</h2>
-      <ul>
-        {teams.map((team) => (
-          <li key={team.code}>{team.name}</li>
-        ))}
-      </ul>
+      {teams && <TeamList teams={teams} />}
     </div>
   );
-}
+
+};
 
 export default App;
