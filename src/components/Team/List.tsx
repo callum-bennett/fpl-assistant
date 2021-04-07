@@ -1,16 +1,17 @@
 import React from "react";
 import { List, ListItem } from "@material-ui/core";
+import { Team } from "../../types/Team";
 
 interface TeamListProps {
-  teams: {}[];
+  teams: Team[];
 }
 
-const TeamList: React.FC<TeamListProps> = (props: any) => {
-  const renderItem = (team: any) => {
-    return <ListItem key={team.code}>{team.name}</ListItem>;
+const TeamList: React.FC<TeamListProps> = (props) => {
+  const renderItem = (team: Team) => {
+    return <ListItem key={team.name}>{team.name}</ListItem>;
   };
 
-  return <List>{props.teams.map((team: any) => renderItem(team))}</List>;
+  return <List>{props.teams.map((team) => renderItem(team))}</List>;
 };
 
 export default TeamList;
