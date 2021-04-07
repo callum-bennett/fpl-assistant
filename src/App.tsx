@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import fetchAll from "./store/actions/fetchAll";
-import "./App.css";
 import { getTeamsAsArray } from "./store/selectors/teams";
 import { getCurrentGameweek } from "./store/selectors/gameweeks";
 
