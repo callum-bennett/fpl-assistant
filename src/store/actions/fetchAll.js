@@ -3,7 +3,7 @@ import { FETCH_ALL } from "./types";
 
 const fetchAll = () => async (dispatch) => {
   try {
-    const res = await apiClient.get("/");
+    const res = await apiClient.get("/bootstrap-static");
 
     if (res.data) {
       dispatch({

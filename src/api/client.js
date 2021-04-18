@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const { REACT_APP_CORS_ANYWHERE } = process.env;
-const FPL_API_ROOT = "https://fantasy.premierleague.com/api/bootstrap-static";
+const FPL_API_ROOT = "https://fantasy.premierleague.com/api";
 
 const apiClient = axios.create({
   baseURL: `${REACT_APP_CORS_ANYWHERE}/${FPL_API_ROOT}`,
